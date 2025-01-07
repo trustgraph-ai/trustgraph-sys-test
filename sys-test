@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import json
+import logging
+from targets import get_targets
+from engine import TestEngine
+
+logger = logging.getLogger("sys-test")
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+
+def main():
+
+    TRUSTGRAPH_DIR = "../trustgraph"
+    TEMPLATES_DIR = f"{TRUSTGRAPH_DIR}/templates"
+    VERSION = "0.19.14"
+
+    engine = TestEngine(
+        trustgraph_dir = TRUSTGRAPH_DIR,
+        templates_dir = TEMPLATES_DIR,
+        version = VERSION
+    )
+
+    for target in get_targets():
+        engine.run_test(target)
+
+main()
+
