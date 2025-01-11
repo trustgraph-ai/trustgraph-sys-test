@@ -12,7 +12,7 @@ def main():
 
     TRUSTGRAPH_DIR = "../trustgraph"
     TEMPLATES_DIR = f"{TRUSTGRAPH_DIR}/templates"
-    VERSION = "0.19.14"
+    VERSION = "0.19.17"
 
     engine = TestEngine(
         trustgraph_dir = TRUSTGRAPH_DIR,

@@ -65,11 +65,19 @@ class TestEngine:
                 "parameters": {}
             },
             {
-                "name": "trustgraph",
+                "name": "trustgraph-base",
                 "parameters": {}
             },
             {
                 "name": "googleaistudio",
+                "parameters": {
+                    "googleaistudio-temperature": 0.1,
+                    "googleaistudio-max-output-tokens": 8000,
+                    "googleaistudio-model": "gemini-1.5-flash-002"
+                }
+            },
+            {
+                "name": "googleaistudio-rag",
                 "parameters": {
                     "googleaistudio-temperature": 0.1,
                     "googleaistudio-max-output-tokens": 8000,
