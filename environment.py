@@ -16,13 +16,13 @@ class TestEnvironment:
         self.target_dir = self.engine.target_run_dir
 
     def __enter__(self):
-        logger.info("Create environment...")
+        logger.debug("Create environment...")
         self.wipe()
         self.setup()
         return self
 
     def __exit__(self, *args):
-        logger.info("Destroy environment...")
+        logger.debug("Destroy environment...")
         self.wipe()
 
     def wipe(self):
@@ -50,7 +50,7 @@ class TestEnvironment:
             f.write(self.cfg)
         self.chcon(path)
 
-        logger.info(f"Generated launch.yaml.")
+        logger.debug(f"Generated launch.yaml.")
 
     def configure_extras(self):
 
@@ -75,7 +75,7 @@ class TestEnvironment:
             with open(f"{self.engine.trustgraph_dir}/{file}", "r") as src:
                 with open(f"{self.target_dir}/{file}", "w") as dest:
                     dest.write(src.read())
-                    logger.info(f"Wrote {file}.")
+                    logger.debug(f"Wrote {file}.")
             self.chcon(self.target_dir)
 
     def setup(self):

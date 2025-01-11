@@ -13,13 +13,13 @@ class SystemLaunched:
         self.oldpath = os.getcwd()
 
     def __enter__(self):
-        logger.info("Launch environment...")
+        logger.debug("Launch environment...")
         os.chdir(self.path)
         self.unlaunch()
         self.launch()
 
     def __exit__(self, *args):
-        logger.info("Undeploy environment...")
+        logger.debug("Undeploy environment...")
         self.unlaunch()
         os.chdir(self.oldpath)
 
@@ -37,7 +37,7 @@ class SystemLaunched:
 
     def launch(self):
 
-        logger.info("Pulling containers...")
+        logger.debug("Pulling containers...")
         proc = subprocess.run(
             [
                 "podman-compose", "-f", "launch.yaml",
@@ -47,7 +47,7 @@ class SystemLaunched:
             stderr=subprocess.DEVNULL
         )
 
-        logger.info("Deploy containers...")
+        logger.debug("Deploy containers...")
         proc = subprocess.run(
             [
                 "podman-compose", "-f", "launch.yaml",

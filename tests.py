@@ -17,7 +17,7 @@ class Tester:
 
     def test_embeddings(self):
 
-        print("** Embeddings test")
+        logger.debug("** Embeddings test")
 
         input = {
             "text": "What is a cat?",
@@ -34,11 +34,11 @@ class Tester:
         if "error" in resp:
             raise RuntimeError("Embeddings: " + resp["error"])
 
-        print("Got embeddings")
+        logger.debug("Got embeddings")
 
     def test_text_completion(self):
 
-        print("** Text completion test")
+        logger.debug("** Text completion test")
 
         input = {
             "system": "Answer the question",
@@ -56,11 +56,11 @@ class Tester:
         if "error" in resp:
             raise RuntimeError("Text completion: " + resp["error"])
 
-        print("Got text completion")
+        logger.debug("Got text completion")
 
     def test_prompt(self):
 
-        print("** Prompt test")
+        logger.debug("** Prompt test")
 
         input = {
             "id": "question",
@@ -80,11 +80,11 @@ class Tester:
         if "error" in resp:
             raise RuntimeError("Prompt: " + resp["error"])
 
-        print("Got prompt response")
+        logger.debug("Got prompt response")
 
     def test_graph_rag(self):
 
-        print("** Graph RAG test")
+        logger.debug("** Graph RAG test")
 
         input = {
             "query": "What is a cat?",
@@ -101,19 +101,19 @@ class Tester:
         if "error" in resp:
             raise RuntimeError("Prompt: " + resp["error"])
 
-        print("Got graph RAG response")
+        logger.debug("Got graph RAG response")
 
     def test_load_text(self):
 
-        print("** Load text")
+        logger.debug("** Load text")
 
         load_text(self.api, self.engine)
 
-        print("Text loaded")
+        logger.debug("Text loaded")
 
     def test_triples(self):
 
-        print("** Query triples")
+        logger.debug("** Query triples")
 
         timeout = 120
         until = time.time() + timeout
@@ -135,7 +135,7 @@ class Tester:
 
                 num = len(resp["response"])
                 if num > 1:
-                    logger.info(f"Got {num} triples.")
+                    logger.debug(f"Got {num} triples.")
                     return
 
             except:
@@ -147,7 +147,7 @@ class Tester:
 
     def run(self):
 
-        logger.info("=== TESTS BEGIN ===")
+        logger.debug("=== TESTS BEGIN ===")
 
         self.test_load_text()
 
@@ -157,14 +157,15 @@ class Tester:
 
         self.test_embeddings()
 
-        print("Sleep for a bit")
+        logger.debug("Sleep for a bit")
+
         time.sleep(15)
 
         self.test_triples()
 
         self.test_graph_rag()
 
-        logger.info("=== TESTS COMPLETED ===")
+        logger.debug("=== TESTS COMPLETED ===")
 
         time.sleep(2)
 

@@ -177,8 +177,6 @@ class TestEngine:
 
         until = time.time() + timeout
 
-#        logger.info(f"Waiting for {proc} to start...")
-
         while time.time() < until:
 
             try:
@@ -192,7 +190,7 @@ class TestEngine:
                 datum = resp["data"]["result"][0]["value"][1]
 
                 if datum == "1":
-                    logger.info(f"{proc} is running")
+                    logger.debug(f"{proc} is running")
                     return
 
 
@@ -207,8 +205,6 @@ class TestEngine:
 
         until = time.time() + timeout
 
-#        logger.info(f"Waiting for {proc} to start...")
-
         while time.time() < until:
 
             try:
@@ -222,7 +218,7 @@ class TestEngine:
                 datum = resp["data"]["result"][0]["value"][1]
 
                 if datum == "1":
-                    logger.info(f"{proc} is up")
+                    logger.debug(f"{proc} is up")
                     return
 
 
@@ -241,7 +237,7 @@ class TestEngine:
         with TestEnvironment(self, target) as environment:
             with SystemLaunched(self.target_run_dir) as system:
 
-                print("Waiting for processes to start...")
+                logger.debug("Waiting for processes to start...")
 
                 self.track_up("zookeeper", 60)
                 self.track_up("bookie", 60)
@@ -266,10 +262,10 @@ class TestEngine:
                 self.track_running("text-completion", 10)
                 self.track_running("text-completion-rag", 10)
 
-                print("System is up!")
+                logger.debug("System is up!")
 
                 tester = Tester(self)
                 tester.run()
 
-                print("Tests passed!")
+                logger.info("Tests passed!")
 
