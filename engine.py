@@ -71,17 +71,17 @@ class TestEngine:
             {
                 "name": "googleaistudio",
                 "parameters": {
-                    "googleaistudio-temperature": 0.1,
-                    "googleaistudio-max-output-tokens": 8000,
-                    "googleaistudio-model": "gemini-1.5-flash-002"
+                    "temperature": 0.1,
+                    "max-output-tokens": 8000,
+                    "model": "gemini-1.5-flash-002"
                 }
             },
             {
                 "name": "googleaistudio-rag",
                 "parameters": {
-                    "googleaistudio-temperature": 0.1,
-                    "googleaistudio-max-output-tokens": 8000,
-                    "googleaistudio-model": "gemini-1.5-flash-002"
+                    "temperature": 0.1,
+                    "max-output-tokens": 8000,
+                    "model": "gemini-1.5-flash-002"
                 }
             },
             {
